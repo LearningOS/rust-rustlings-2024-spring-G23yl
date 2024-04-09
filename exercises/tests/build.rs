@@ -15,10 +15,14 @@ fn main() {
         timestamp
     );
     println!("cargo:{}", your_command);
+    println!("cargo:{}", "rerun-if-changed=build.rs");
+    println!("cargo:{}", "rustc-env=TEST_FOO=bar");
 
     // In tests8, we should enable "pass" feature to make the
     // testcase return early. Fill in the command to tell
     // Cargo about that.
     let your_command = "Your command here, please checkout exercises/tests/build.rs";
     println!("cargo:{}", your_command);
+    println!("cargo:{}", "rerun-if-changed=build.rs");
+    println!("cargo:{}", "rustc-cfg=feature=\"pass\"");
 }
