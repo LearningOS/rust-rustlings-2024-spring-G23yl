@@ -3,7 +3,6 @@
 	This problem requires you to implement a basic BFS algorithm
 */
 
-//I AM NOT DONE
 use std::collections::VecDeque;
 
 // Define a graph
@@ -29,8 +28,21 @@ impl Graph {
     fn bfs_with_return(&self, start: usize) -> Vec<usize> {
         
 		//TODO
-
+        let mut vis = vec![false; self.adj.len()];
+        let mut deque = VecDeque::<usize>::new();
         let mut visit_order = vec![];
+        vis[start] = true;
+        deque.push_back(start);
+        while !deque.is_empty() {
+            let x = deque.pop_front().unwrap();
+            visit_order.push(x);
+            for &nxt in self.adj[x].iter() {
+                if !vis[nxt] {
+                    deque.push_back(nxt);
+                    vis[nxt] = true;
+                }
+            }
+        }
         visit_order
     }
 }

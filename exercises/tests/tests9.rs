@@ -28,7 +28,6 @@
 // You should NOT modify any existing code except for adding two lines of attributes.
 
 extern "Rust" {
-    #[link_name = "my_demo_function"]
     fn my_demo_function(a: u32) -> u32;
     #[link_name = "my_demo_function"]
     fn my_demo_function_alias(a: u32) -> u32;
@@ -36,6 +35,7 @@ extern "Rust" {
 
 mod Foo {
     // No `extern` equals `extern "Rust"`.
+    #[no_mangle]
     fn my_demo_function(a: u32) -> u32 {
         a
     }
